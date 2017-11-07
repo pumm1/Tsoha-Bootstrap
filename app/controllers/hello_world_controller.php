@@ -13,5 +13,21 @@ class HelloWorldController extends BaseController {
         //echo 'Tervetuloa hiekkalaatikolle! Täällä kaikilla on kivvvvaaa!';
         View::make('helloworld.html');
     }
+    
+    public static function etusivu(){
+        View::make('/suunnitelmat/etusivu.html');
+    }
+    
+    public static function kategoria(){
+        View::make('suunnitelmat/kategoria.html');
+    }
+    
+    public static function login(){
+        View::make('suunnitelmat/login.html');
+    }
+    
+    public static function resepti(){
+        View::make('suunnitelmat/resepti.html');
+    }
 
 }
