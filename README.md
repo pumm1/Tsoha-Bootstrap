@@ -12,3 +12,4 @@ Online keittokirja
 [Kategoria](http://sakureme.users.cs.helsinki.fi/tsoha/kategoria)
 [resepti](http://sakureme.users.cs.helsinki.fi/tsoha/resepti)
 [login](http://sakureme.users.cs.helsinki.fi/tsoha/login)
+[Muokkaus](http://sakureme.users.cs.helsinki.fi/tsoha/muok)

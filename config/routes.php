@@ -23,3 +23,7 @@ $routes->get('/login', function(){
 $routes->get('/resepti', function(){
     HelloWorldController::resepti();
 });
+
+$routes->get('/muok', function(){
+    HelloWorldController::muok();
+});

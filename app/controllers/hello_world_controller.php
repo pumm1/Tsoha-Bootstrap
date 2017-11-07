@@ -29,5 +29,7 @@ class HelloWorldController extends BaseController {
     public static function resepti(){
         View::make('suunnitelmat/resepti.html');
     }
-
+    public static function muok(){
+        View::make('/suunnitelmat/muok.html');
+    }
 }
