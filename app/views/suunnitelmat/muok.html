@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa reseptiäsi tässä</h1>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- mitäs himskattia tää button-tsydeemi tekee? poistaminen ei tunnu vaikuttavan mihinkään-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="etusivu">Etusivu</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id ="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <!--navigaation linkit tänne-->
+        <li><a href="login">Kirjaavupa tästä sissään</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<h1>Muokkaa reseptiäsi tässä</h1>
 
   <form>
     <div class="form-group">
