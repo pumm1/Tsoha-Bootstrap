@@ -1,5 +1,8 @@
 <?php
 
+require 'app/models/Person.php';
+require 'app/models/Recipe.php';
+require 'app/models/Ingredient.php';
 class HelloWorldController extends BaseController {
 
     public static function index() {
@@ -11,6 +14,25 @@ class HelloWorldController extends BaseController {
     public static function sandbox() {
         // Testaa koodiasi täällä
         //echo 'Tervetuloa hiekkalaatikolle! Täällä kaikilla on kivvvvaaa!';
+        Person::save('kalle', 'kalle123');
+        $person = Person::find(1);
+        $people = Person::all();
+        
+        $recipe = Recipe::find(1);
+        $recipes = Recipe::all();
+        
+        $ingredient = Ingredient::find(1);
+        $ingredients = Ingredient::all();
+        
+        Kint::dump($person);
+        Kint::dump($people);
+        
+        Kint::dump($recipe);
+        Kint::dump($recipes);
+        
+        Kint::dump($ingredient);
+        Kint::dump($ingredients);
+        
         View::make('helloworld.html');
     }
     
