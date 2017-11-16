@@ -13,7 +13,8 @@ $routes->get('/etusivu', function() {
 });
 
 $routes->get('/kategoria', function(){
-    HelloWorldController::kategoria();
+//    HelloWorldController::kategoria();
+    RecipeController::index();
 });
 
 $routes->get('/login', function(){
@@ -21,6 +22,10 @@ $routes->get('/login', function(){
 });
 
 $routes->get('/resepti', function(){
+    HelloWorldController::resepti();
+});
+
+$routes->get('/resepti/:id', function($id){
     HelloWorldController::resepti();
 });
 

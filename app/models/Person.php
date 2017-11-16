@@ -8,10 +8,11 @@ class Person extends BaseModel {
         parent::__construct($attributes);
     }
     
-    public static function save($name, $passowrd){
-        $query = DB::connection()->prepare('INSERT INTO Person (name, password) VALUES (:name, :password)');
-        $query->execute();
-    }
+    //lue vähän pidemmälle ensin!
+//    public function save($name, $passowrd){
+//        $query = DB::connection()->prepare('INSERT INTO Person (name, password) VALUES (:name, :password)');
+//        $query->execute();
+//    }
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Person WHERE id = :id LIMIT 1');

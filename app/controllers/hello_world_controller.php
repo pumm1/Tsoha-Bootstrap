@@ -14,7 +14,7 @@ class HelloWorldController extends BaseController {
     public static function sandbox() {
         // Testaa koodiasi täällä
         //echo 'Tervetuloa hiekkalaatikolle! Täällä kaikilla on kivvvvaaa!';
-        Person::save('kalle', 'kalle123');
+//        Person::save('kalle', 'kalle123');
         $person = Person::find(1);
         $people = Person::all();
         
