@@ -16,31 +16,27 @@
     <div class="collapse navbar-collapse" id ="navigation">
       <ul class="nav navbar-nav navbar-right">
         <!--navigaation linkit tänne-->
-        <li><a href="login">Kirjaavupa tästä sissään</a></li>
+        <li><a href="/tsoha/login">Kirjaavupa tästä sissään</a></li>
       </ul>
     </div>
   </div>
 </nav>
+  <h1>Lissää resepti</h1>
 
-  <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Poista</button> <a href="muok" class="btn btn-default">Muokkaa</a>
-  </p>
-  <!-- Tiedot tulee listana tähän -->
+  <form>
+    <div class="checkbox">
 
-    {% for recipe in recipes %}
-    <h1>{{recipe.name}}</h1>
-    <li><strong>Käyttäjä: </strong>{{recipe.person  }}</li>
-    <li><strong>Raaka-aineet: </strong>  aineita</li>
-    <td>
-      <p>
-        {{recipe.info}}
-      </p>
-    </td>
-    {% endfor %}
-
-
-
-  <!-- Kuvaus tulee tähän -->
-
+    </div>
+    <div class="form-group">
+      <label>Reseptin nimi</label>
+      <input type="text" class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <label>Ohje</label>
+      <textarea class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
 {% endblock %}

@@ -23,14 +23,17 @@
   </div>
 </nav>
 <h1>Kategorian nimi</h1>
+<p>
+   <a href="kategoria/lisaa" class="btn btn-success">Lisää resepti</a>
+ </p>
 <ul>
 
-    {% for recipe in recipes %}
+  {% for recipe in recipes %}
 
-        <li><a href="{{lib/view.php}}/{{recipe.id}}">{{recipe.name }}</li>
+      <li><a href="resepti/{{recipe.id}}">{{recipe.name }}</li>
 
-    {% endfor %}
-    
+  {% endfor %}
+
 </ul>
 
 

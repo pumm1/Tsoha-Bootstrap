@@ -7,11 +7,12 @@ class RecipeController extends BaseController {
 
         View::make('sivu/kategoria.html', array('recipes' => $recipes));
     }
-
+    
     public static function resepti($id) {
         $recipe = Recipe::find($id);
+        $recipes =  array($recipe);
         
-        View::make('sivu/respeti.html');
+        View::make('sivu/resepti.html', array('recipes' => $recipes));
     }
 
 }

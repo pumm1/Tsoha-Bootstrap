@@ -12,23 +12,27 @@ $routes->get('/etusivu', function() {
     HelloWorldController::etusivu();
 });
 
-$routes->get('/kategoria', function(){
+$routes->get('/kategoria', function() {
 //    HelloWorldController::kategoria();
     RecipeController::index();
 });
 
-$routes->get('/login', function(){
+$routes->get('/kategoria/lisaa', function() {
+    HelloWorldController::add();
+});
+
+$routes->get('/login', function() {
     HelloWorldController::login();
 });
 
-$routes->get('/resepti', function(){
+$routes->get('/resepti', function() {
     HelloWorldController::resepti();
 });
 
-$routes->get('/resepti/:id', function($id){
-    HelloWorldController::resepti();
+$routes->get('/resepti/:id', function($id) {
+    RecipeController::resepti($id);
 });
 
-$routes->get('/muok', function(){
+$routes->get('/muok', function() {
     HelloWorldController::muok();
 });

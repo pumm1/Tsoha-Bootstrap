@@ -37,7 +37,7 @@ class HelloWorldController extends BaseController {
     }
     
     public static function etusivu(){
-        View::make('/suunnitelmat/etusivu.html');
+        View::make('sivu/etusivu.html');
     }
     
     public static function kategoria(){
@@ -49,9 +49,13 @@ class HelloWorldController extends BaseController {
     }
     
     public static function resepti(){
-        View::make('suunnitelmat/resepti.html');
+        View::make('sivu/resepti.html');
     }
     public static function muok(){
         View::make('/suunnitelmat/muok.html');
+    }
+    
+    public static function add(){
+        View::make('/sivu/lisaa.html');
     }
 }
