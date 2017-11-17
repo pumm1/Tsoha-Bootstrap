@@ -9,12 +9,13 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/etusivu', function() {
-    HelloWorldController::etusivu();
+    CategoryController::index();
 });
 
-$routes->get('/kategoria', function() {
+$routes->get('/:id', function($id) {
 //    HelloWorldController::kategoria();
-    RecipeController::index();
+    RecipeController::inCategory($id);
+//    RecipeController::index();
 });
 
 $routes->get('/kategoria/lisaa', function() {

@@ -24,13 +24,10 @@
 </nav>
 
 <h2>Kategoriat</h2>
-<p>
-  <a  href="kategoria">Ruoka</a>
-</p>
-<p>
-  <a  href="kategoria">Juoma</a>
-</p>
-
-
+{% for category in categories %}
+  <p>
+    <a href="{{category.id}}">{{category.name}}</a>
+  </p>
+{% endfor %}
 
 {% endblock %}
