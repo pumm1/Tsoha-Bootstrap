@@ -45,7 +45,7 @@ class HelloWorldController extends BaseController {
     }
     
     public static function login(){
-        View::make('suunnitelmat/login.html');
+        View::make('sivu/login.html');
     }
     
     public static function resepti(){
@@ -56,6 +56,6 @@ class HelloWorldController extends BaseController {
     }
     
     public static function add(){
-        View::make('/sivu/lisaa.html');
+        View::make('sivu/lisaa.html');
     }
 }
