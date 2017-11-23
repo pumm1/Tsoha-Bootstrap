@@ -6,29 +6,28 @@ class Recipe extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validateName', 'validateInfo');
+    }
+    
+    public function validateName(){
+        return $this->validate_string($this->name, 3, 'name');
+    }
+    
+    public function validateInfo(){
+        return $this->validate_string($this->info, 10, 'info');
     }
 
     public function save() { //ei staattinen!
         $query = DB::connection()->prepare('INSERT INTO Recipe (category_id, person_id, name, info) VALUES 
             (:category_id, :person_id, :name, :info) RETURNING id');
 //        $name = Person::find('name');
-        $query->execute(array('category_id' => $this->category_id, 'person_id' => $this->person_id, 
-        'name' => $this->name, 'info' => $this->info));
+        $query->execute(array('category_id' => $this->category_id, 'person_id' => $this->person_id,
+            'name' => $this->name, 'info' => $this->info));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
 
-    public function validate_name() {
-        $errors = array();
-        if ($this->name == '' || $this->name == null) {
-            $errors[] = 'Nimi ei saa olla tyhjä!';
-        }
-        if (strlen($this->name) < 3) {
-            $errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
-        }
 
-        return $errors;
-    }
 
     public static function findLatestId() {
 

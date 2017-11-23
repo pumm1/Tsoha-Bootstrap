@@ -12,6 +12,7 @@ class RecipeController extends BaseController {
         $params = $_POST;
 
         $id = Recipe::findLatestId();
+
         $recipe = new Recipe(array(
             'id' => $id,
             'category_id' => $params['category_id'],
@@ -19,10 +20,14 @@ class RecipeController extends BaseController {
             'name' => $params['name'],
             'info' => $params['info']
         ));
-
-        Kint::dump($params);
-        $recipe->save();
-        Redirect::to('/resepti/' . $recipe->id, array('message' => 'Resepti on lisätty kirjastoosi!'));
+        $errors = $recipe->errors();
+        if (count($errors) == 0) {
+            $recipe->save();
+            Redirect::to('/resepti/' . $recipe->id, array('message' => 'Resepti on lisätty kirjastoosi!'));
+        } else {
+            View::make('sivu/lisaa.html', array('errors' => $errors, 'params' => $params));
+        }
+//        Kint::dump($params);
     }
 
     public static function inCategory($id) {
