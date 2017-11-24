@@ -58,16 +58,23 @@ class Recipe extends BaseModel {
     }
 
     public static function destroy($id) {
-//        $p = $this->id;
-        
-        $query = DB::connection()->prepare('DELETE FROM Recipe WHERE id = ' .$id);
+        $query = DB::connection()->prepare('DELETE FROM Recipe WHERE id = ' . $id);
         $query->execute();
     }
 
-    public static function update() {//JATKA UPDATEN KATSOMISESTA
-        $name = $this->name;
-        $info = $this->info;
-        $query = DB::connection()->prepare('UPDATE Recipe SET name = :name, info = :info WHERE id = ' . $this->id);
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Recipe SET (name, info) = (:name, :info) WHERE id = :id');
+        $query->execute(array('id' => $this->id,
+            'name' => $this->name,
+            'info' => $this->info));
+    }
+
+    public static function idUpdate($id) { //eikun tähän korvaa vaan samoilla jutuilla jutut
+        $recipe = Recipe::find($id);
+        $name = $recipe->name;
+        $info = $recipe->info;
+        $query = DB::connection()->prepare("UPDATE Recipe SET name = '" . $name . "', info = '" . $info . "' WHERE id = " . $id);
+        $query->execute();
     }
 
     public static function find($id) {

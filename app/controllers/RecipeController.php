@@ -10,7 +10,6 @@ class RecipeController extends BaseController {
 
     public static function edit($id) {
 //        $recipe = Recipe::find($id);
-        
 //        View::make('sivu/muok.html', array('attributes' => $recipe));
         $recipe = Recipe::find($id);
         $recipes = array($recipe);
@@ -24,6 +23,7 @@ class RecipeController extends BaseController {
         $attributes = array(
             'id' => $id,
             'name' => $params['name'],
+            'person_id' => $params['person_id'],
             'category_id' => $params['category_id'],
             'info' => $params['info']
         );
@@ -34,8 +34,9 @@ class RecipeController extends BaseController {
         if (count($errors) > 0) {
             View::make('sivu/muok.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
+//            $recipe->idUpdate($id);
             $recipe->update();
-            Redirect::to('/etusivu' . $recipe->id, array('message' => 'Peliä on muokattu onnistuneesti!'));
+            Redirect::to('/etusivu', array('message' => 'Reseptiä on muokattu onnistuneesti!'));
         }
     }
 
