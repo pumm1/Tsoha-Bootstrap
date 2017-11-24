@@ -23,14 +23,16 @@
 </nav>
 
   <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Poista</button> <a href="muok" class="btn btn-default">Muokkaa</a>
-  </p>
+
   <!-- Tiedot tulee listana tähän -->
 
     {% for recipe in recipes %}
+
+    <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
+      <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
+    </form>
     <h1>{{recipe.name}}</h1>
-    <li><strong>Käyttäjä: </strong>{{recipe.person  }}</li>
+    <li><strong>Käyttäjä: </strong>{{recipe.person}}</li>
     <li><strong>Raaka-aineet: </strong>  aineita</li>
     <td>
       <p>

@@ -8,6 +8,43 @@ class RecipeController extends BaseController {
         View::make('sivu/kategoria.html', array('recipes' => $recipes));
     }
 
+    public static function edit($id) {
+//        $recipe = Recipe::find($id);
+        
+//        View::make('sivu/muok.html', array('attributes' => $recipe));
+        $recipe = Recipe::find($id);
+        $recipes = array($recipe);
+
+        View::make('sivu/muok.html', array('recipes' => $recipes));
+    }
+
+    public static function update($id) {
+        $params = $_POST;
+
+        $attributes = array(
+            'id' => $id,
+            'name' => $params['name'],
+            'category_id' => $params['category_id'],
+            'info' => $params['info']
+        );
+
+        $recipe = new Recipe($attributes);
+        $errors = $recipe->errors();
+
+        if (count($errors) > 0) {
+            View::make('sivu/muok.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+            $recipe->update();
+            Redirect::to('/etusivu' . $recipe->id, array('message' => 'Peliä on muokattu onnistuneesti!'));
+        }
+    }
+
+    public static function destroy($id) {
+        $recipe = new Recipe(array('id' => $id));
+        $recipe->destroy($id);
+        Redirect::to('/etusivu', array('message' => 'Resepti poistettu onnistuneesti'));
+    }
+
     public static function store() {
         $params = $_POST;
 

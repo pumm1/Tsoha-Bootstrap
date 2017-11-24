@@ -25,14 +25,28 @@ class BaseModel {
         return $errors;
     }
 
+    public function validate_cat($id, $name) {
+        $errors = array();
+        if (strlen($id) > 1) {
+            $errors[] = $name . ' ei saa olla tyhjä!';
+        }
+
+        return $errors;
+    }
+
     public function validate_string($string, $len, $name) { //varmistetaan nimen oikeellisuus
         $errors = array();
-        if ($string == '' || $string == null) {
-            $errors[] = 'ei saa olla tyhjä!';
+        if ($string == '99999') {
+            $errorr[] = $name . ' ei saa olla tyhjä!';
+        } else {
+            if ($string == '' || $string == null) {
+                $errors[] = $name . ' ei saa olla tyhjä!';
+            }
+            if (strlen($string) < $len) {
+                $errors[] = $name . ' pituuden tulee olla vähintään ' . $len . ' merkkiä!';
+            }
         }
-        if (strlen($string) < $len) {
-            $errors[] = $name. 'pituuden tulee olla vähintään ' .$len. ' merkkiä!';
-        }
+
 
         return $errors;
     }

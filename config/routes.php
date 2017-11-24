@@ -16,6 +16,19 @@ $routes->get('/etusivu', function() {
     CategoryController::index();
 });
 
+$routes->get('/resepti/:id/muok', function($id) {
+    RecipeController::edit($id);
+});
+
+
+$routes->post('/resepti/:id/muok', function($id) {
+    RecipeController::update($id);
+});
+
+$routes->post('/resepti/:id/destroy', function($id) {
+    RecipeController::destroy($id);
+});
+
 $routes->get('/:id', function($id) {
 //    HelloWorldController::kategoria();
     RecipeController::inCategory($id);
@@ -27,12 +40,11 @@ $routes->get('/kategoria/lisaa', function() {
 });
 
 
-
 $routes->get('/resepti', function() {
     HelloWorldController::resepti();
 });
 
-$routes->post('/kategoria/resepti', function(){ //tämä taitaa olla se toimiva post
+$routes->post('/kategoria/resepti', function() { //tämä taitaa olla se toimiva post
     RecipeController::store();
 });
 
@@ -54,6 +66,4 @@ $routes->get('/resepti/:id', function($id) {
 });
 
 
-$routes->get('/muok', function() {
-    HelloWorldController::muok();
-});
+
