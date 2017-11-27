@@ -5,11 +5,11 @@ $routes->get('/', function() {
 });
 
 $routes->get('/login', function() {
-    HelloWorldController::login();
+    PersonController::login();
 });
 
-$routes->post('/login', function(){
-   PersonController::handle_login(); 
+$routes->post('/login', function() {
+    PersonController::handle_login();
 });
 
 $routes->get('/hiekkalaatikko', function() {

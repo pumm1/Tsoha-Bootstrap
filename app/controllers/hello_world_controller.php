@@ -9,7 +9,7 @@ class HelloWorldController extends BaseController {
     public static function index() {
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
         //View::make('home.html');
-        echo 'Tämä on etusivu!';
+        self::etusivu();
     }
 
     public static function sandbox() {
@@ -31,7 +31,10 @@ class HelloWorldController extends BaseController {
     }
 
     public static function etusivu() {
-        View::make('sivu/etusivu.html');
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        Kint::dump($user_logged_in);
+        View::make('sivu/etusivu.html', array('user_logged_in' => $user_logged_in));
     }
 
     public static function kategoria() {

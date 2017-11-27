@@ -13,12 +13,21 @@
       <a class="navbar-brand" href="/tsoha/etusivu">Etusivu</a>
     </div>
 
-    <div class="collapse navbar-collapse" id ="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <!--navigaation linkit tänne-->
-        <li><a href="login">Kirjaavupa tästä sissään</a></li>
-      </ul>
-    </div>
+    {% if user_logged_in %}
+      <div class="collapse navbar-collapse" id ="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <!--navigaation linkit tänne-->
+          <li><a>Käyttäjä {{user_logged_in.name}} kirjautuneena</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id ="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <!--navigaation linkit tänne-->
+          <li><a href="login">Kirjaavupa tästä sissään</a></li>
+        </ul>
+      </div>
+    {% endif %}
   </div>
 </nav>
 
@@ -26,11 +35,14 @@
 
   <!-- Tiedot tulee listana tähän -->
 
+  {%if user_logged_in %}
+    <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
+  </form>
+  {% endif  %}
     {% for recipe in recipes %}
 
-    <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
-      <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
-    </form>
+
     <h1>{{recipe.name}}</h1>
     <li><strong>Käyttäjä: </strong>{{recipe.person}}</li>
     <li><strong>Raaka-aineet: </strong>  aineita</li>

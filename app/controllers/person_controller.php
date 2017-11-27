@@ -16,14 +16,14 @@ class PersonController extends BaseController {
     public static function handle_login() {
         $params = $_POST;
         
-        $user = Person::authenticate($params['user'], $params['password']);
+        $user = Person::authenticate($params['person'], $params['password']);
         
         if(!$user){
-            View::make('sivu/login.html', array('error' => 'Väärä tunnus tai salasana', 'user' => $params['user']));
+            View::make('sivu/login.html', array('error' => 'Väärä tunnus tai salasana'));
         }else{
-            $_SESSION['user'] = $user->id;
+            $_SESSION['person'] = $user->id;
             
-            Redirect::to('/etusivu', array('message' => 'tervetulova ', $user->name));
+            Redirect::to('/etusivu', array('message' => 'tervetulova '. $user->name));
         }
     }
 

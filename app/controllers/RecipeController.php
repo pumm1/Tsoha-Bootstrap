@@ -77,8 +77,9 @@ class RecipeController extends BaseController {
     public static function resepti($id) {
         $recipe = Recipe::find($id);
         $recipes = array($recipe);
-
-        View::make('sivu/resepti.html', array('recipes' => $recipes));
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        View::make('sivu/resepti.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in));
     }
 
 }

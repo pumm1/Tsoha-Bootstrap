@@ -48,8 +48,8 @@ class Person extends BaseModel {
     }
 
     public static function authenticate($name, $pass) {
-        $query = DB::connection()->prepare('SELECT * FROM Person WHERE name = :name LIMIT 1');
-        $query->execute(array('name' => $name));
+        $query = DB::connection()->prepare('SELECT * FROM Person WHERE name = :name AND password = :pass LIMIT 1');
+        $query->execute(array('name' => $name, 'pass' => $pass));
         $row = $query->fetch();
         if ($row) {
             $user = new Person(array(
@@ -57,9 +57,7 @@ class Person extends BaseModel {
                 'name' => $row['name'],
                 'password' => $row['password']
             ));
-            if ($user->password == $pass) {
-                return $user;
-            }
+            return $user;
         }
         return null;
     }

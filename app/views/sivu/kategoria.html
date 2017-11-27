@@ -14,18 +14,29 @@
       <a class="navbar-brand" href="etusivu">Etusivu</a>
     </div>
 
-    <div class="collapse navbar-collapse" id ="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <!--navigaation linkit tänne-->
-        <li><a href="login">Kirjaavupa tästä sissään</a></li>
-      </ul>
-    </div>
+    {% if user_logged_in %}
+      <div class="collapse navbar-collapse" id ="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <!--navigaation linkit tänne-->
+          <li><a>Käyttäjä {{user_logged_in.name}} kirjautuneena</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id ="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <!--navigaation linkit tänne-->
+          <li><a href="login">Kirjaavupa tästä sissään</a></li>
+        </ul>
+      </div>
+    {% endif %}
   </div>
 </nav>
-
+{% if user_logged_in%}
 <p>
    <a href="kategoria/lisaa" class="btn btn-success">Lisää resepti</a>
- </p>
+</p>
+{% endif %}
+
 <ul>
 
   {% for recipe in recipes %}
