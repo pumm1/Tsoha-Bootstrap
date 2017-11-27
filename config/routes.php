@@ -8,6 +8,10 @@ $routes->get('/login', function() {
     HelloWorldController::login();
 });
 
+$routes->post('/login', function(){
+   PersonController::handle_login(); 
+});
+
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
