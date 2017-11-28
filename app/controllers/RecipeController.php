@@ -4,7 +4,7 @@ class RecipeController extends BaseController {
 
     public static function index() { //hmmm öhmm..?
         $recipes = Recipe::all();
-        
+
         View::make('sivu/kategoria.html', array('recipes' => $recipes));
     }
 
@@ -13,11 +13,17 @@ class RecipeController extends BaseController {
 //        View::make('sivu/muok.html', array('attributes' => $recipe));
         $recipe = Recipe::find($id);
         $recipes = array($recipe);
-
-        View::make('sivu/muok.html', array('recipes' => $recipes));
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        if (!$user_logged_in) {
+            Redirect::to('/login');
+        } else {
+            View::make('sivu/muok.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in));
+        }
     }
 
     public static function update($id) {
+
         $params = $_POST;
 
         $attributes = array(
@@ -43,7 +49,13 @@ class RecipeController extends BaseController {
     public static function destroy($id) {
         $recipe = new Recipe(array('id' => $id));
         $recipe->destroy($id);
-        Redirect::to('/etusivu', array('message' => 'Resepti poistettu onnistuneesti'));
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        if (!$user_logged_in) {
+            Redirect::to('/login');
+        } else {
+            Redirect::to('/etusivu', array('message' => 'Resepti poistettu onnistuneesti'));
+        }
     }
 
     public static function store() {
@@ -78,7 +90,7 @@ class RecipeController extends BaseController {
         $recipe = Recipe::find($id);
         $recipes = array($recipe);
         $user = Person::find($recipe->person_id);
-        
+
         self::check_logged_in();
         $user_logged_in = self::get_user_logged_in();
         View::make('sivu/resepti.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in, 'user' => $user));
