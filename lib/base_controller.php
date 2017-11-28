@@ -16,7 +16,7 @@ class BaseController {
         // Toteuta kirjautumisen tarkistus tähän.
         // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
         if (!isset($_SESSION['person'])) {
-            Redirect::to('/login', array('message' => 'loggoopa sissään!'));
+//            Redirect::to('/login', array('message' => 'loggoopa sissään!'));
         }
     }
 

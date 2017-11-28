@@ -12,6 +12,11 @@ class PersonController extends BaseController {
     public static function login(){
         View::make('sivu/login.html');
     }
+    
+    public static function logout(){
+    $_SESSION['person'] = null;
+    Redirect::to('/etusivu');
+  }
 
     public static function handle_login() {
         $params = $_POST;

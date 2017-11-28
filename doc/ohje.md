@@ -16,4 +16,4 @@ poistaa tai muokata reseptejä_
 
 
 _Kun kirjautuminen on implementoitu, voitte testata kirjautumista tunnuksila:
-käyttäjä: savolainen  salasana: qwerty_
+käyttäjä: savolanen  salasana: qwerty_

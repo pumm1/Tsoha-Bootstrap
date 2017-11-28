@@ -8,6 +8,10 @@ $routes->get('/login', function() {
     PersonController::login();
 });
 
+$routes->post('/logout', function(){
+  PersonController::logout();
+});
+
 $routes->post('/login', function() {
     PersonController::handle_login();
 });

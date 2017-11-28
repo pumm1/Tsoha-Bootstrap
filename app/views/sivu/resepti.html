@@ -20,7 +20,7 @@
           <li><a>Käyttäjä {{user_logged_in.name}} kirjautuneena</a></li>
         </ul>
       </div>
-      {% else %}
+    {% else %}
       <div class="collapse navbar-collapse" id ="navigation">
         <ul class="nav navbar-nav navbar-right">
           <!--navigaation linkit tänne-->
@@ -35,16 +35,16 @@
 
   <!-- Tiedot tulee listana tähän -->
 
-  {%if user_logged_in %}
-    <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
-    <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
-  </form>
-  {% endif  %}
-    {% for recipe in recipes %}
 
+    {% for recipe in recipes %}
+    {%if user_logged_in %}
+        <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
+        <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
+      </form>
+    {% endif  %}
 
     <h1>{{recipe.name}}</h1>
-    <li><strong>Käyttäjä: </strong>{{recipe.person}}</li>
+    <li><strong>Käyttäjä: </strong>{{user.name}}</li>
     <li><strong>Raaka-aineet: </strong>  aineita</li>
     <td>
       <p>
