@@ -29,6 +29,9 @@
           <!--navigaation linkit tänne-->
           <li><a href="login">Kirjaavupa tästä sissään</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-center">
+          <li><a href="register">rekisteröidy</a></li>
+        </ul>
       </div>
     {% endif %}
   </div>
@@ -41,9 +44,11 @@
 
     {% for recipe in recipes %}
     {%if user_logged_in %}
+    {% if user_logged_in.id == recipe.person_id%}
         <form method="post" action="{{recipe.id}}/destroy" style="display: inline-block;">
         <button type="submit" class="btn btn-danger">Poista</button><a href="{{recipe.id}}/muok" class="btn btn-default">Muokkaa</a>
       </form>
+      {% endif %}
     {% endif  %}
 
     <h1>{{recipe.name}}</h1>

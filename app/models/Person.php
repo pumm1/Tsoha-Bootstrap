@@ -29,6 +29,11 @@ class Person extends BaseModel {
         }
         return null;
     }
+    
+    public function save(){
+        $query = DB::connection()->prepare('INSERT INTO Person (name, password) VALUES (:name, :password)');
+        $query->execute(array('name' => $this->name, 'password' => $this->password));
+    }
 
     public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Person');

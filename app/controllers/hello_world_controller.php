@@ -54,7 +54,10 @@ class HelloWorldController extends BaseController {
     }
 
     public static function add() {
-        View::make('sivu/lisaa.html');
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        
+        View::make('sivu/lisaa.html', array('user_logged_in' => $user_logged_in));
     }
 
 }

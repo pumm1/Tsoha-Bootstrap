@@ -62,11 +62,12 @@ class RecipeController extends BaseController {
         $params = $_POST;
 
         $id = Recipe::findLatestId();
-
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
         $recipe = new Recipe(array(
             'id' => $id,
             'category_id' => $params['category_id'],
-            'person_id' => $params['person_id'],
+            'person_id' => $user_logged_in->id,
             'name' => $params['name'],
             'info' => $params['info']
         ));

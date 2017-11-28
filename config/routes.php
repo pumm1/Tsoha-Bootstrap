@@ -8,8 +8,36 @@ $routes->get('/login', function() {
     PersonController::login();
 });
 
-$routes->post('/logout', function(){
-  PersonController::logout();
+$routes->post('/kategoria/logout', function() {
+    PersonController::logout();
+});
+
+$routes->post('/resepti/logout', function() {
+    PersonController::logout();
+});
+
+$routes->post('/resepti/:id/logout', function() {
+    PersonController::logout();
+});
+
+$routes->get('/register', function() {
+    PersonController::register();
+});
+
+$routes->get('/resepti/register', function() {
+    PersonController::register();
+});
+
+$routes->post('/register', function() {
+    PersonController::store();
+});
+
+$routes->post('/resepti/register', function() {
+    PersonController::store();
+});
+
+$routes->post('/logout', function() {
+    PersonController::logout();
 });
 
 $routes->post('/login', function() {
