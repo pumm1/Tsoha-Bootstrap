@@ -53,6 +53,7 @@ $routes->get('/etusivu', function() {
 });
 
 $routes->get('/resepti/:id/muok', function($id) {
+    
     RecipeController::edit($id);
 });
 

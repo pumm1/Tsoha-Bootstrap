@@ -18,7 +18,11 @@ class RecipeController extends BaseController {
         if (!$user_logged_in) {
             Redirect::to('/login');
         } else {
-            View::make('sivu/muok.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in));
+            if($user_logged_in->id == $recipe->person_id){
+                View::make('sivu/muok.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in));
+            }else{
+                Redirect::to('/etusivu');
+            }
         }
     }
 
