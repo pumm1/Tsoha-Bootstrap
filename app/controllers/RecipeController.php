@@ -18,9 +18,9 @@ class RecipeController extends BaseController {
         if (!$user_logged_in) {
             Redirect::to('/login');
         } else {
-            if($user_logged_in->id == $recipe->person_id){
+            if ($user_logged_in->id == $recipe->person_id) {
                 View::make('sivu/muok.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in));
-            }else{
+            } else {
                 Redirect::to('/etusivu');
             }
         }
@@ -29,20 +29,24 @@ class RecipeController extends BaseController {
     public static function update($id) {
 
         $params = $_POST;
-
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
         $attributes = array(
             'id' => $id,
             'name' => $params['name'],
-            'person_id' => $params['person_id'],
-            'category_id' => $params['category_id'],
+            'person_id' => $user_logged_in->id,
+            'category_id' => 1,
             'info' => $params['info']
         );
 
         $recipe = new Recipe($attributes);
+        $oldRecipe = Recipe::find($id);
+        $recipes = array($oldRecipe);
         $errors = $recipe->errors();
+        
 
         if (count($errors) > 0) {
-            View::make('sivu/muok.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('sivu/muok.html', array('errors' => $errors, 'params' => $params, 'recipes' => $recipes));
         } else {
 //            $recipe->idUpdate($id);
             $recipe->update();

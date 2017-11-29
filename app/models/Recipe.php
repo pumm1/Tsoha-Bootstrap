@@ -33,6 +33,11 @@ class Recipe extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO Recipe (category_id, person_id, name, info) VALUES 
             (:category_id, :person_id, :name, :info) RETURNING id');
 //        $name = Person::find('name');
+        if($this->category_id != 1){
+            if($this->category_id != 2){
+                $this->category_id = 1;
+            }
+        }
         $query->execute(array('category_id' => $this->category_id, 'person_id' => $this->person_id,
             'name' => $this->name, 'info' => $this->info));
         $row = $query->fetch();

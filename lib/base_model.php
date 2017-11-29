@@ -36,7 +36,7 @@ class BaseModel {
 
     public function validate_string($string, $len, $name) { //varmistetaan nimen oikeellisuus
         $errors = array();
-        if ($string == '99999') {
+        if ($string == '9999' && $name == 'kategoria') {
             $errorr[] = $name . ' ei saa olla tyhjä!';
         } else {
             if ($string == '' || $string == null) {
