@@ -43,7 +43,7 @@ class RecipeController extends BaseController {
         $oldRecipe = Recipe::find($id);
         $recipes = array($oldRecipe);
         $errors = $recipe->errors();
-        
+
 
         if (count($errors) > 0) {
             View::make('sivu/muok.html', array('errors' => $errors, 'params' => $params, 'recipes' => $recipes));
@@ -68,10 +68,10 @@ class RecipeController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-
-        $id = Recipe::findLatestId();
+//        $ingredients = $params['ingredients'];
         self::check_logged_in();
         $user_logged_in = self::get_user_logged_in();
+        $id = Recipe::findLatestId();
         $recipe = new Recipe(array(
             'id' => $id,
             'category_id' => $params['category_id'],
@@ -79,9 +79,25 @@ class RecipeController extends BaseController {
             'name' => $params['name'],
             'info' => $params['info']
         ));
+        $ingredientArr = explode(" ", $params['ingredients']);
+        $ingredients = array();
+        foreach ($ingredientArr as $ingredient) {
+            $aine = Ingredient::findByName($ingredient);
+            if ($aine == null) {
+                $aine = new Ingredient(array('name' => $ingredient));
+                $aine->save();
+            }
+            $ingredients[] = $aine;
+        }
+
+
         $errors = $recipe->errors();
         if (count($errors) == 0) {
             $recipe->save();
+            foreach ($ingredients as $ingredient) {
+                $aine = Ingredient::findByName($ingredient->name);
+                $aine->connectToRecipe($recipe->id);
+            }
             Redirect::to('/resepti/' . $recipe->id, array('message' => 'Resepti on lisätty kirjastoosi!'));
         } else {
             View::make('sivu/lisaa.html', array('errors' => $errors, 'params' => $params));
@@ -99,10 +115,11 @@ class RecipeController extends BaseController {
         $recipe = Recipe::find($id);
         $recipes = array($recipe);
         $user = Person::find($recipe->person_id);
-
+        $ingredients = Ingredient::findByRecipe($recipe->id);
         self::check_logged_in();
         $user_logged_in = self::get_user_logged_in();
-        View::make('sivu/resepti.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in, 'user' => $user));
+        View::make('sivu/resepti.html', array('recipes' => $recipes, 'user_logged_in' => $user_logged_in, 'user' => $user,
+            'ingredients' => $ingredients));
     }
 
 }
