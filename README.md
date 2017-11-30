@@ -13,5 +13,5 @@ Työn aiheenani on online keittokirja, jonne käyttäjät voivat lisätä omia r
 * [Kategoria: Ruoka](http://sakureme.users.cs.helsinki.fi/tsoha/1)
 * [Kategoria: Juoma](http://sakureme.users.cs.helsinki.fi/tsoha/2)
 * [login](http://sakureme.users.cs.helsinki.fi/tsoha/login)
-
+* [register](http://sakureme.users.cs.helsinki.fi/tsoha/register)
 
