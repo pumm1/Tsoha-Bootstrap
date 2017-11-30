@@ -107,8 +107,8 @@ class RecipeController extends BaseController {
 
     public static function inCategory($id) {
         $recipes = Recipe::inCategory($id);
-
-        View::make('sivu/kategoria.html', array('recipes' => $recipes));
+        $category = Category::find($id);
+        View::make('sivu/kategoria.html', array('recipes' => $recipes, 'category' => $category));
     }
 
     public static function resepti($id) {
