@@ -10,8 +10,8 @@ Työn aiheenani on online keittokirja, jonne käyttäjät voivat lisätä omia r
 * [Linkki dokumentaatiooni](https://github.com/pumm1/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
 
 * [Etusivu](http://sakureme.users.cs.helsinki.fi/tsoha/etusivu)
-* [Kategoria](http://sakureme.users.cs.helsinki.fi/tsoha/kategoria)
-* [resepti](http://sakureme.users.cs.helsinki.fi/tsoha/resepti)
+* [Kategoria: Ruoka](http://sakureme.users.cs.helsinki.fi/tsoha/1)
+* [Kategoria: Juoma](http://sakureme.users.cs.helsinki.fi/tsoha/2)
 * [login](http://sakureme.users.cs.helsinki.fi/tsoha/login)
-* [Muokkaus](http://sakureme.users.cs.helsinki.fi/tsoha/muok)
+
 
