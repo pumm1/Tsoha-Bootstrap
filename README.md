@@ -14,5 +14,4 @@ Työn aiheenani on online keittokirja, jonne käyttäjät voivat lisätä omia r
 * [resepti](http://sakureme.users.cs.helsinki.fi/tsoha/resepti)
 * [login](http://sakureme.users.cs.helsinki.fi/tsoha/login)
 * [Muokkaus](http://sakureme.users.cs.helsinki.fi/tsoha/muok)
-* [Käyttöhoje](doc/ohje.md)
 
