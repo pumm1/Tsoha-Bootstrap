@@ -63,6 +63,8 @@ class Recipe extends BaseModel {
     }
 
     public static function destroy($id) {
+        $query = DB::connection()->prepare('DELETE FROM Addtable WHERE recipe_id = ' .$id);
+        $query->execute();
         $query = DB::connection()->prepare('DELETE FROM Recipe WHERE id = ' . $id);
         $query->execute();
     }

@@ -7,7 +7,7 @@ Työn aiheenani on online keittokirja, jonne käyttäjät voivat lisätä omia r
 ## Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://sakureme.users.cs.helsinki.fi/tsoha/etusivu)
-* [Linkki dokumentaatiooni](https://github.com/pumm1/Tsoha-Bootstrap/tree/master/doc)
+* [Linkki dokumentaatiooni](https://github.com/pumm1/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
 
 * [Etusivu](http://sakureme.users.cs.helsinki.fi/tsoha/etusivu)
 * [Kategoria](http://sakureme.users.cs.helsinki.fi/tsoha/kategoria)

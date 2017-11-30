@@ -53,15 +53,17 @@
 
     <h1>{{recipe.name}}</h1>
     <li><strong>Käyttäjä: </strong>{{user.name}}</li>
-    <li><strong>Raaka-aineet: </strong></li>
+    <strong>Raaka-aineet: </strong>
     {% for ingredient in ingredients %}
       <li>{{ingredient.name}}</li>
     {% endfor %}
+
     <td>
       <p>
-        {{recipe.info}}
+        <h4>{{recipe.info}}</h4>
       </p>
     </td>
+
     {% endfor %}
 
 
