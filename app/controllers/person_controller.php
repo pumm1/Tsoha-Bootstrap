@@ -24,21 +24,25 @@ class PersonController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-
-        if (strlen($params['name']) > 3) {
-            if (strlen($params['password']) > 3) {
-                $person = new Person(array(
-                    'id' => 5,
-                    'name' => $params['name'],
-                    'password' => $params['password']
-                ));
-                $person->save();
-                Redirect::to('/etusivu');
-            }else{
-                Redirect::to('/register');
+        $temp = Person::findByName($params['name']);
+        if ($temp == null) {
+            if (strlen($params['name']) > 3) {
+                if (strlen($params['password']) > 3) {
+                    $person = new Person(array(
+                        'id' => 5,
+                        'name' => $params['name'],
+                        'password' => $params['password']
+                    ));
+                    $person->save();
+                    Redirect::to('/etusivu');
+                } else {
+                    Redirect::to('/register',  array('message' => 'nimi tai salasana liian lyhyt (3 merkkiä tai enemmän)'));
+                }
+            } else {
+                Redirect::to('/register',  array('message' => 'nimi tai salasana liian lyhyt (3 merkkiä tai enemmän)'));
             }
         }else{
-            Redirect::to('/register');
+            Redirect::to('/register', array('message' => 'nimi jo käytössä'));
         }
     }
 

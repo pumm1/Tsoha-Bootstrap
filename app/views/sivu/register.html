@@ -14,6 +14,13 @@
     </div>
 
   </nav>
+  {% if message %}
+  <div class="alert alert-danger">
+    <ul>  
+        <li>{{message}}</li>
+    </ul>
+  </div>
+  {% endif %}
   <form method="post" action="register">
     <div class="form-group">
       <label>Käättäjänimi</label>

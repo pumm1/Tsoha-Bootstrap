@@ -13,6 +13,22 @@ class Person extends BaseModel {
 //        $query = DB::connection()->prepare('INSERT INTO Person (name, password) VALUES (:name, :password)');
 //        $query->execute();
 //    }
+    
+    public static function findByName($name) {
+        $query = DB::connection()->prepare('SELECT * FROM Person WHERE name = :name LIMIT 1');
+        $query->execute(array('name' => $name));
+        $row = $query->fetch();
+
+        if ($row) {
+            $person = new Person(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'password' => $row['password']
+            ));
+            return $person;
+        }
+        return null;
+    }
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Person WHERE id = :id LIMIT 1');
