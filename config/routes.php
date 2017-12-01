@@ -1,7 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
+    CategoryController::index();
 });
 
 $routes->get('/login', function() {
