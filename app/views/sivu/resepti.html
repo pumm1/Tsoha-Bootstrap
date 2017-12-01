@@ -41,7 +41,13 @@
 
   <!-- Tiedot tulee listana tähän -->
 
-
+    {% if message%}
+      <div class = "alert alert-success">
+        <ul>
+          <li>{{message}}</li>
+        </ul>
+      </div>
+    {% endif %}
     {% for recipe in recipes %}
     {%if user_logged_in %}
     {% if user_logged_in.id == recipe.person_id%}

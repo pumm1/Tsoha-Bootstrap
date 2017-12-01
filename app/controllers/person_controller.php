@@ -34,7 +34,7 @@ class PersonController extends BaseController {
                         'password' => $params['password']
                     ));
                     $person->save();
-                    Redirect::to('/etusivu');
+                    Redirect::to('/etusivu' , array('message' => 'rekisteröinti onnistui!'));
                 } else {
                     Redirect::to('/register',  array('message' => 'nimi tai salasana liian lyhyt (3 merkkiä tai enemmän)'));
                 }

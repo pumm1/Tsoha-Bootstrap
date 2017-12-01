@@ -98,7 +98,7 @@ class RecipeController extends BaseController {
                 $aine = Ingredient::findByName($ingredient->name);
                 $aine->connectToRecipe($recipe->id);
             }
-            Redirect::to('/resepti/' . $recipe->id, array('message' => 'Resepti on lisätty kirjastoosi!'));
+            Redirect::to('/resepti/' . $recipe->id, array('message' => 'Resepti on lisätty onnistuneesti!'));
         } else {
             View::make('sivu/lisaa.html', array('errors' => $errors, 'params' => $params));
         }

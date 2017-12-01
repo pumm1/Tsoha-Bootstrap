@@ -38,7 +38,13 @@
 
   </div>
 </nav>
-
+{% if message %}
+<div class="alert alert-success">
+  <ul>
+      <li>{{message}}</li>
+  </ul>
+</div>
+{% endif %}
 <h2>Kategoriat</h2>
 {% for category in categories %}
   <p>
