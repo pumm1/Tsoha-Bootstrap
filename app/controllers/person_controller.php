@@ -55,7 +55,7 @@ class PersonController extends BaseController {
                  $person->update();
                   Redirect::to('/etusivu' , array('message' => 'salasanan vaihto onnistui!'));
              }else{
-                  Redirect::to('/'.$person->id.'/changePassword', array('message' => 'vanha salasana väärin!'));
+                  Redirect::to('/'.$person->id.'/changePassword', array('message' => 'vanha salasana väärin  !'));
              }
         }else{
             Redirect::to('/'.$person->id.'/changePassword', array('message' => 'uusi salasana liian lyhyt!'));
