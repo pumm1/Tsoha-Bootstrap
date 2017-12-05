@@ -103,7 +103,7 @@ class Recipe extends BaseModel {
     }
 
     public static function inCategory($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Recipe WHERE category_id = :id');
+        $query = DB::connection()->prepare('SELECT * FROM Recipe WHERE category_id = :id ORDER BY id DESC');
         $query->execute(array(':id' => $id));
         $rows = $query->fetchAll();
         $recipes = array();

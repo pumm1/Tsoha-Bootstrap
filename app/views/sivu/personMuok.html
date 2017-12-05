@@ -34,48 +34,29 @@
   </div>
 </nav>
   {% if user_logged_in%}
-  <h1>Muokkoopa tässä reseptiä</h1>
+  <h1>Vaeha salasana!</h1>
 
-  {% if errors %}
+  {% if message %}
       <div class="alert alert-danger">
         <ul>
-          {% for error in errors %}
-            <li>{{error}}</li>
-          {% endfor %}
+
+            <li>{{message}}</li>
+
         </ul>
       </div>
     {% endif %}
-{% for recipe in recipes %}
-  <form method="post" action="/tsoha/resepti/{{recipe.id}}/muok">
+{% for person in people %}
+  <form method="post" action="/tsoha/{{user_logged_in.id}}/changePassword">
 
     <div class="form-group">
-      <label>Reseptin nimi</label>
-      <input type="text" name="name" class="form-control" value="{{recipe.name}}">
-    </div>
-
-
-    <div class="checkbox">
-      <label>
-        <input type="hidden" name="category_id" value="9999">
-        Oletuskategoria on ruoka
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name ="category_id" value="1">
-        Ruoka
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name ="category_id" value="2">
-        Juoma
-      </label>
+      <label>Vanha salasana</label>
+      <input type="password" name="oldpassword" class="form-control" value="">
     </div>
     <div class="form-group">
-      <label>Ohje</label>
-      <textarea name="info" class="form-control">{{recipe.info}}</textarea>
+      <label>Uusi salasana</label>
+      <input type="password" name="password" class="form-control" value="">
     </div>
+
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>

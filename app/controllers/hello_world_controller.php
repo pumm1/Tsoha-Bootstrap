@@ -56,6 +56,9 @@ class HelloWorldController extends BaseController {
     public static function add() {
         self::check_logged_in();
         $user_logged_in = self::get_user_logged_in();
+        if(!$user_logged_in){
+            Redirect::to('/etusivu');
+        }
         
         View::make('sivu/lisaa.html', array('user_logged_in' => $user_logged_in));
     }

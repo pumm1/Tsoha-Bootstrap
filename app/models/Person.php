@@ -29,6 +29,18 @@ class Person extends BaseModel {
         }
         return null;
     }
+    
+    
+    public function changePassword($password){
+        $this->password = $password;
+    }
+    
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Person SET (name, password) = (:name, :password) WHERE id = :id');
+        $query->execute(array('id' => $this->id,
+            'name' => $this->name,
+            'password' => $this->password));
+    }
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Person WHERE id = :id LIMIT 1');

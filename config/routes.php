@@ -8,6 +8,14 @@ $routes->get('/login', function() {
     PersonController::login();
 });
 
+$routes->get('/:id/changePassword', function($id){
+    PersonController::edit($id);
+});
+
+$routes->post('/:id/changePassword', function($id){
+    PersonController::update($id);
+});
+
 $routes->post('/kategoria/logout', function() {
     PersonController::logout();
 });
@@ -84,6 +92,8 @@ $routes->get('/resepti', function() {
 $routes->post('/kategoria/resepti', function() { //tämä taitaa olla se toimiva post
     RecipeController::store();
 });
+
+
 
 //$routes->post('/kategoria/lisaa', function(){ //
 //    RecipeController::store();
