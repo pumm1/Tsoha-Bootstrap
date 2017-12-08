@@ -12,6 +12,10 @@ $routes->get('/:id/changePassword', function($id){
     PersonController::edit($id);
 });
 
+$routes->post('/:id/logout', function($id){
+    PersonController::logout();
+});
+
 $routes->post('/:id/changePassword', function($id){
     PersonController::update($id);
 });

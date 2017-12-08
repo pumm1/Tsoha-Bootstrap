@@ -11,6 +11,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/tsoha/etusivu">Etusivu</a>
+      <a class ="navbar-brand" href="http://sakureme.users.cs.helsinki.fi/tsoha/1">Ruoka</a>
+      <a class ="navbar-brand" href="http://sakureme.users.cs.helsinki.fi/tsoha/2">Juoma</a>
     </div>
 
     {% if user_logged_in %}
@@ -58,21 +60,16 @@
       <input type="text" name="ingredients" class="form-control" value="">
     </div>
 
+
     <div class="checkbox">
       <label>
-        <input type="hidden" name ="category_id" value="99999">
-        Oletuskategoria on ruoka
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name ="category_id" value="1">
+        <input type="radio" name ="category_id" value="1" checked>
         Ruoka
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name ="category_id" value="2">
+        <input type="radio" name ="category_id" value="2">
         Juoma
       </label>
     </div>

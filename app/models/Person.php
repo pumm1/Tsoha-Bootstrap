@@ -63,7 +63,7 @@ class Person extends BaseModel {
         $query->execute(array('name' => $this->name, 'password' => $this->password));
     }
 
-    public static function all() {
+    public static function all() { //ei käytössä missään
         $query = DB::connection()->prepare('SELECT * FROM Person');
         $query->execute();
         $rows = $query->fetchAll();

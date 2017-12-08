@@ -12,7 +12,10 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/tsoha/etusivu">Etusivu</a>
+      <a class ="navbar-brand" href="http://sakureme.users.cs.helsinki.fi/tsoha/1">Ruoka</a>
+      <a class ="navbar-brand" href="http://sakureme.users.cs.helsinki.fi/tsoha/2">Juoma</a>
     </div>
+
 
     {% if user_logged_in %}
       <div class="collapse navbar-collapse" id ="navigation">
@@ -34,7 +37,7 @@
           <li><a href="login">Kirjaavupa tästä sissään</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-center">
-          <li><a href="register">rekisteröidy</a></li>
+          <li><a href="register">Rekisteröidy</a></li>
         </ul>
 
       </div>
@@ -50,6 +53,7 @@
   </ul>
 </div>
 {% endif %}
+<h1>Huluvattoman hyvä keittokirja!<h1>
 <h2>Kategoriat</h2>
 {% for category in categories %}
   <p>
